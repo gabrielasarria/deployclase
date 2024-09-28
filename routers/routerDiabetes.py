@@ -5,7 +5,7 @@ import numpy as np
 
 #el primero es nombre del archivo, asignatura.py y estamos importando asignatura que es la clase
 
-app = APIRouter()
+router = APIRouter()
 
 pkl_filename = ("RFDiabetesv102.pkl")
 with open(pkl_filename,'rb') as file:
@@ -13,13 +13,13 @@ with open(pkl_filename,'rb') as file:
 
 labels = ["Sano","Posible diabetes"]
 
-@app.get("/")
+@router.get("/")
 async def root():
     return{
         "message":"AI service"
     }
 
-@app.post("/predict")
+@router.post("/predict")
 def predict_diabetes(data:schemas.Diabetesdata):
     data = data.model_dump()
     Pregnancies = data['Pregnancies']
