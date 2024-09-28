@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: fastapi-diabetes-api
+    env: python
+    buildCommand: pip install --upgrade pip && pip install -r requirements.txt
+    startCommand: gunicorn -k uvicorn.workers.UvicornWorker main:app
+    envVars:
+      - key: PYTHONUNBUFFERED
+        value: "true"
+    build:
+      packages:
+        - build-essential
+        - python3-dev
+        - cython
+        - g++
+        - gcc
