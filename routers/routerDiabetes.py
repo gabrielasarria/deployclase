@@ -20,7 +20,7 @@ async def root():
     }
 
 @app.post("/predict")
-def predict_diabetes(data:schemas.DiabetesData):
+def predict_diabetes(data:schemas.Diabetesdata):
     data = data.model_dump()
     Pregnancies = data['Pregnancies']
     Glucose = data['Glucose']
